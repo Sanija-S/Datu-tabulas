@@ -1,9 +1,9 @@
 import sqlite3
 # pieslēdzamies datu bāzze vai izveidojam datu bāzes failu
-conn=sqlite3.connect("pavasaris.db")
+conn=sqlite3.connect("tests.db")
 
 # izveidojam kursoru....c- objekts pieslēgumā
-c=conn.cursor #rindinu pec rindinas par bauda savienojumu ar datu bāzi
+c=conn.cursor() #rindinu pec rindinas par bauda savienojumu ar datu bāzi
 
 
 
@@ -11,12 +11,19 @@ c=conn.cursor #rindinu pec rindinas par bauda savienojumu ar datu bāzi
 
 c.execute('''CREATE TABLE IF NOT EXISTS tabula2(
           id INTEGER PRIMARY KEY, 
-          krasa TEXT.
+          krasa TEXT,
           pilseta TEXT 
-) ''') # tākā jāizpilda komandas kas  nav pitona- tam nolukam izmantojam trīs ķepiņas
+)''') # tākā jāizpilda komandas kas  nav pitona- tam nolukam izmantojam trīs ķepiņas
 
+# ir nepicešami dati- ielikt programmā txt, csv, json un tad nolasit
+dati= [
+    (1,"zaļš", "Durbe"),
+    (2,"oranžš", "Simltene"),
+    (3,"Pelēks", "Rīga"),
+]
 
-
+#nepieciesams datus ievietot tabulā
+c.executemany("INSERT INTO tabula2(id,krasa,pilseta) VALUES (?,?,?)")
 
 
 #saglabāt izmaiņas....aizvērt savienojumu
