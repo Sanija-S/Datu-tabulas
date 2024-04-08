@@ -23,7 +23,7 @@ dati= [
 ]
 
 #nepieciesams datus ievietot tabulā
-c.executemany("INSERT INTO tabula2(id,krasa,pilseta) VALUES (?,?,?)")
+c.executemany("INSERT INTO tabula2(id,krasa,pilseta) VALUES (?,?,?)", dati)
 
 
 #saglabāt izmaiņas....aizvērt savienojumu
